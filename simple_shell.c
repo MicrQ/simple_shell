@@ -12,11 +12,12 @@ int main(void)
 
 	while (1)
 	{
-		printf("$ ");
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
 		if (getline(&command, &len, stdin) == -1)
 		{
-			free(command);
-			return (-1);
+			printf("\n");
+			break;
 		}
 		argc = word_cnt(command);
 		cmd_dup = strdup(command), token = strtok(cmd_dup, " \n");
@@ -27,8 +28,9 @@ int main(void)
 		}
 		argv[i] = NULL;
 		execute(argv);
+		free(cmd_dup);
 	}
-	free(command), free(cmd_dup);
+	free(command);
 	return (0);
 }
 
