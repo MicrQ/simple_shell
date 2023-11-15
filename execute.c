@@ -22,13 +22,10 @@ void execute(char *argv[], int argc, char *filename, int *err)
 	else if (pid == 0)
 	{
 		if (argc != 1)
-			printf("%s: No such file or directory\n", filename);
-		else
-		{
-			execve(argv[0], argv, NULL);
-			perror(filename);
-			return;
-		}
+			argv[0] = "x";
+		execve(argv[0], argv, NULL);
+		perror(filename);
+		return;
 	}
 	else
 		wait(NULL);
