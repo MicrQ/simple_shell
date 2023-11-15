@@ -35,14 +35,9 @@ int main(int ac, char *av[])
 		*	token = strtok(NULL, " \n");
 		*}
 		*/
-		if (argc != 1)
-			perror(av[0]);
-		else
-		{
-			argv[0] = strtok(command, " \n");
-			argv[1] = NULL;
-			execute(argv, av[0], &error_count);
-		}
+		argv[0] = strtok(command, " \n");
+		argv[1] = NULL;
+		execute(argv, argc, av[0], &error_count);
 		/*free(cmd_dup);*/
 	}
 	free(command);
