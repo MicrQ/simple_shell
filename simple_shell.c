@@ -8,22 +8,27 @@
  */
 int main(int ac, char *av[])
 {
-	char *command = NULL;
+	char *argv[100], *command = NULL;
+	size_t len = 0;
+	int error_count = 0, argc;
 
 	(void) av;
 	if (ac != 1)
 		return (-1);
 	while (1)
 	{
-		command = rcv_command();
-		if (command == NULL)
+		if (isatty(STDIN_FILENO))
+			_puts("$ ");
+		if (getline(&command, &len, stdin) == -1)
 		{
-			write(STDOUT_FILENO, "\n", 1);
-			return (0);
+			break;
 		}
-	printf("%s", command);
-	free(command);
+		argc = word_cnt(command);
+		argv[0] = _strtok(command, " \n");
+		argv[1] = NULL;
+		execute(argv, argc, av[0], &error_count);
 	}
+	free(command);
 	return (0);
 }
 

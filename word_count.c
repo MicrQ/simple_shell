@@ -8,13 +8,13 @@
 int word_cnt(char *str)
 {
 	int i = 0;
-	char *tok, *delim = " \n", *cmd = strdup(str);
+	char *tok, *delim = " \n", *cmd = _strdup(str);
 
-	tok = strtok(cmd, delim);
+	tok = _strtok(cmd, delim);
 	while (tok)
 	{
 		i++;
-		tok = strtok(NULL, delim);
+		tok = _strtok(NULL, delim);
 	}
 	free(cmd);
 	return (i);
