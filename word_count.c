@@ -8,7 +8,7 @@
 int word_cnt(char *str)
 {
 	int i = 0;
-	char *tok, *delim = " \n", *cmd = _strdup(str);
+	char *tok, *delim = " \n", *cmd = strdup(str);
 
 	tok = strtok(cmd, delim);
 	while (tok)
