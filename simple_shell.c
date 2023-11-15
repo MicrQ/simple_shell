@@ -22,7 +22,7 @@ int main(int ac, char *av[])
 			printf("$ ");
 		if (getline(&command, &len, stdin) == -1)
 		{
-			printf("\n");
+			/*printf("\n");*/
 			break;
 		}
 		argc = word_cnt(command);
