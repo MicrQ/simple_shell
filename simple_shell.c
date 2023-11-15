@@ -18,13 +18,11 @@ int main(int ac, char *av[])
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			_puts("$ ");
+			printf("$ ");
 		if (getline(&command, &len, stdin) == -1)
-		{
 			break;
-		}
 		argc = word_cnt(command);
-		argv[0] = _strtok(command, " \n");
+		argv[0] = strtok(command, " \n");
 		argv[1] = NULL;
 		execute(argv, argc, av[0], &error_count);
 	}

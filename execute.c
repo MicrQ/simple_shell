@@ -12,6 +12,7 @@
 void execute(char *argv[], int argc, char *filename, int *err)
 {
 	pid_t pid = fork();
+	char *hold = argv[0];
 
 	(void) err;
 	if (pid == -1)
@@ -22,16 +23,10 @@ void execute(char *argv[], int argc, char *filename, int *err)
 	else if (pid == 0)
 	{
 		if (argc != 1)
-		{
-			_puts(filename);
-			_puts(": No such file or directory\n");
-		}
-		else
-		{
-			execve(argv[0], argv, NULL);
-			perror(filename);
-			return;
-		}
+			hold = "unknown";
+		execve(hold, argv, NULL);
+		perror(filename);
+		return;
 	}
 	else
 		wait(NULL);
