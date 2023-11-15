@@ -8,8 +8,8 @@
  */
 int main(int ac, char *av[])
 {
-	char *argv[2], *command = NULL;
-	size_t len = 0;
+	char *argv[2], command[1024];
+	/*size_t len = 0;*/
 	int error_count = 0, argc;
 
 	if (ac != 1)
@@ -21,9 +21,9 @@ int main(int ac, char *av[])
 	{
 		if (isatty(STDIN_FILENO))
 			printf("$ ");
-		if (getline(&command, &len, stdin) == -1)
+		if (fgets(command, 1024, stdin) == NULL || feof(stdin))
 		{
-			/*printf("\n");*/
+			printf("\n");
 			break;
 		}
 		argc = word_cnt(command);
@@ -31,7 +31,7 @@ int main(int ac, char *av[])
 		argv[1] = NULL;
 		execute(argv, argc, av[0], &error_count);
 	}
-	free(command);
+	/*free(command);*/
 	return (0);
 }
 
