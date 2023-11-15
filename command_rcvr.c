@@ -17,7 +17,7 @@ char *rcv_command(void)
 	if (val == -1)
 	{
 		free(cmd);
-		perror("Error");
+		return(NULL);
 	}
 	return (cmd);
 }

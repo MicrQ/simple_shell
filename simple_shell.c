@@ -21,7 +21,7 @@ int main(int ac, char *av[])
 			write(STDOUT_FILENO, "\n", 1);
 			return (0);
 		}
-	printf("%s\n", command);
+	printf("%s", command);
 	free(command);
 	}
 	return (0);
