@@ -5,6 +5,7 @@
  *			 given command.
  * @argv: array of pointers that store commands
  * @filename: the filename of the executed program
+ * @err: error message counter
  */
 
 void execute(char *argv[], char *filename, int *err)
@@ -21,7 +22,6 @@ void execute(char *argv[], char *filename, int *err)
 	{
 		execve(argv[0], argv, NULL);
 		perror(filename);
- 
 		return;
 	}
 	else

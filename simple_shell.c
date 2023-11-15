@@ -2,6 +2,8 @@
 
 /**
  * main - entry of the program
+ * @ac: argument counter
+ * @av: argument vector
  * Return: -1 in failure. 0 in success
  */
 int main(int ac, char *av[])
@@ -20,10 +22,9 @@ int main(int ac, char *av[])
 			printf("$ ");
 		if (getline(&command, &len, stdin) == -1)
 		{
-			/*printf("\n");*/
+			printf("\n");
 			break;
 		}
-		
 		argc = word_cnt(command);
 		/**
 		*cmd_dup = strdup(command), token = strtok(cmd_dup, " \n");
