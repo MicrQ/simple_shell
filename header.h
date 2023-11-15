@@ -9,6 +9,6 @@
 #include <string.h>
 
 int word_cnt(char *str);
-void execute(char *argv[]);
+void execute(char *argv[], char *filename, int *err);
 
 #endif

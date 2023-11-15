@@ -4,12 +4,15 @@
  * main - entry of the program
  * Return: -1 in failure. 0 in success
  */
-int main(void)
+int main(int ac, char *av[])
 {
 	char *argv[100], *command = NULL, *token, *cmd_dup;
 	size_t len = 0;
-	int argc = 0, i;
+	int argc = 0, i, error_count = 0;
 
+	(void) av;
+	if (ac != 1)
+		return (-1);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -27,7 +30,7 @@ int main(void)
 			token = strtok(NULL, " \n");
 		}
 		argv[i] = NULL;
-		execute(argv);
+		execute(argv, av[0], &error_count);
 		free(cmd_dup);
 	}
 	free(command);
