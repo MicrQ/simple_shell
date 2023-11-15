@@ -10,5 +10,6 @@
 
 int word_cnt(char *str);
 void execute(char *argv[], int argc, char *filename, int *err);
+char *rcv_command(void);
 
 #endif
