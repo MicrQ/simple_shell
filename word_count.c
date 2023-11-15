@@ -10,11 +10,11 @@ int word_cnt(char *str)
 	int i = 0;
 	char *tok, *delim = " \n", *cmd = _strdup(str);
 
-	tok = _strtok(cmd, delim);
+	tok = strtok(cmd, delim);
 	while (tok)
 	{
 		i++;
-		tok = _strtok(NULL, delim);
+		tok = strtok(NULL, delim);
 	}
 	free(cmd);
 	return (i);

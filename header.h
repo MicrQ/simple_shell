@@ -8,7 +8,6 @@
 #include <unistd.h>
 #include <string.h>
 
-char *_strtok(char *str, const char *delim);
 int word_cnt(char *str);
 void execute(char *argv[], int argc, char *filename, int *err);
 char *_strdup(char *str);
